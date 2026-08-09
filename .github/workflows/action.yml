@@ -1,6 +1,0 @@
-name: 'Nome da sua Action'
-description: 'Descrição do que ela faz'
-
-runs:
-  using: 'node20'
-  main: 'main.js
