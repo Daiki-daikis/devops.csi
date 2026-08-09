@@ -1,0 +1,30 @@
+name: Pipeline CI
+
+on:
+  push:
+    branches:
+
+  - main
+    - master
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Código checkout
+      uses: actions/checkout@v4
+
+    - name: Build
+        run: |
+          echo "Iniciando o processo"
+          echo "Instalando dependências"
+          sleep 2
+          echo "Build concluido."
+    - name: Teste
+        run: |
+          echo "Iniciando o teste"
+          sleep 2
+          echo "Testes concluidos."
+          
