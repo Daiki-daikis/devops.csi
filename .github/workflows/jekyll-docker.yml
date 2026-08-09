@@ -1,31 +1,28 @@
-name: Meu Pipeline CI
+name: Pipeline CI Basico
 
-# 1. COMMIT: O gatilho! O workflow roda quando alguém faz um push.
-on: [push]
+on:
+  push:
+    branches:
+      - main
+      - master
 
 jobs:
-  build-test-artifact:
+  build-and-test:
     runs-on: ubuntu-latest
-    
+
     steps:
-      # Baixa o seu código para o servidor do GitHub
       - name: Checkout do código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # 2. BUILD: Simula a construção do projeto
-      - name: Etapa de Build
-        run: echo "Construindo o projeto e instalando dependências..."
+      - name: Executar Build
+        run: |
+          echo "Iniciando o processo de build..."
+          echo "Instalando dependências fictícias..."
+          sleep 2
+          echo "Build concluído!"
 
-      # 3. TESTES: Simula a execução de testes
-      - name: Etapa de Testes
-        run: echo "Executando testes automatizados... 100% de sucesso!"
-
-      # 4. ARTEFATOS: Gera um arquivo de relatório final e salva no GitHub
-      - name: Gerar Arquivo de Artefato
-        run: echo "Tudo funcionou perfeitamente!" > relatorio.txt
-
-      - name: Upload do Artefato
-        uses: actions/upload-artifact@v3
-        with:
-          name: meu-relatorio-ci
-          path: relatorio.txt
+      - name: Executar Testes
+        run: |
+          echo "Rodando a suíte de testes..."
+          sleep 2
+          echo "✅ Todos os testes passaram com sucesso!"
