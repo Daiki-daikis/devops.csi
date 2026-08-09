@@ -1,0 +1,31 @@
+name: Meu Pipeline CI
+
+# 1. COMMIT: O gatilho! O workflow roda quando alguém faz um push.
+on: [push]
+
+jobs:
+  build-test-artifact:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Baixa o seu código para o servidor do GitHub
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      # 2. BUILD: Simula a construção do projeto
+      - name: Etapa de Build
+        run: echo "Construindo o projeto e instalando dependências..."
+
+      # 3. TESTES: Simula a execução de testes
+      - name: Etapa de Testes
+        run: echo "Executando testes automatizados... 100% de sucesso!"
+
+      # 4. ARTEFATOS: Gera um arquivo de relatório final e salva no GitHub
+      - name: Gerar Arquivo de Artefato
+        run: echo "Tudo funcionou perfeitamente!" > relatorio.txt
+
+      - name: Upload do Artefato
+        uses: actions/upload-artifact@v3
+        with:
+          name: meu-relatorio-ci
+          path: relatorio.txt
