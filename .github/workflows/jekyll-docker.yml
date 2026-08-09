@@ -1,6 +1,6 @@
 name: Pipeline CI
 
-on:
+ on:
   push:
     branches:
 
